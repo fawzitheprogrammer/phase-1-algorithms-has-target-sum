@@ -1,18 +1,22 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+function hasTargetSum(nums, target) {
+  const seen = new Set();
+  for (let num of nums) {
+      const complement = target - num;
+      if (seen.has(complement)) {
+          return true;
+      }
+      seen.add(num);
+  }
+  return false;
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
+// Additional test cases
+console.log(hasTargetSum([3, 56, 5, 6, 11, 7], 10));
+console.log(hasTargetSum([22, 66, 4, 6, 30], 25));  
+console.log(hasTargetSum([1, 2, 5], 4));             
+console.log(hasTargetSum([1, 53, 3, 45, 67], 10));     
+console.log(hasTargetSum([-1, 5, 1], 0));           
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
